@@ -7,11 +7,11 @@ class SessionsController < Clearance::SessionsController
     if authentication.user
       user = authentication.user
       authentication.update_token(auth_hash)
-      @next = user_path(user)
+      @next = users_show_path(user)
       @notice = "You're signed in again with fb"
     else
       user = User.create_with_auth_and_hash(authentication,auth_hash)
-      @next = user_path(user)
+      @next = users_show_path(user)
       @notice = "Signed in first time with facebook"
     end
     sign_in(user)
@@ -19,3 +19,4 @@ class SessionsController < Clearance::SessionsController
   end
 
 end
+
