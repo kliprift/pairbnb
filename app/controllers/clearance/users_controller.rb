@@ -1,4 +1,4 @@
-class UsersController < Clearance::BaseController
+class Clearance::UsersController < ApplicationController
   if respond_to?(:before_action)
     before_action :redirect_signed_in_users, only: [:create, :new]
     skip_before_action :require_login, only: [:create, :new], raise: false
@@ -60,4 +60,9 @@ class UsersController < Clearance::BaseController
   def user_params
     params[Clearance.configuration.user_parameter] || Hash.new
   end
+
+  def permit_params
+    params.require(:user).permit(:name, :email, :password)
+  end
+
 end
