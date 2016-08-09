@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
   include Clearance::User
-
-  validates :email, uniqueness: true
+  EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
+  validates :email, :presence => true, uniqueness: {case_sensitive: false, message: " was used before"}, :format => EMAIL_REGEX
   has_many :authentications, :dependent => :destroy
+  has_many :listings, :dependent => :destroy
+  has_many :reservations, :dependent => :destroy
+  has_many :transactions
+
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
