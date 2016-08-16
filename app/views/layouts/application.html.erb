@@ -8,7 +8,9 @@
 </head>
 <body>
 
+<% if !signed_in? %>
 <%= link_to "Connect With Facebook", "/auth/facebook" %>
+<% end %>
 
 <% if signed_in? %>
   Signed in as: <%= current_user.email %>

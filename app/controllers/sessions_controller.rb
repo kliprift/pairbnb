@@ -7,7 +7,7 @@ class SessionsController < Clearance::SessionsController
     if authentication.user
       user = authentication.user
       authentication.update_token(auth_hash)
-      @next = users_show_path(user)
+      @next = welcome_index_path
       @notice = "You're signed in again with fb"
     else
       user = User.create_with_auth_and_hash(authentication,auth_hash)
