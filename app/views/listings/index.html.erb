@@ -1,3 +1,17 @@
-<% @listing.each do |l| %>
-<%= l.property_type %>
+
+<% @listings.all.each do |l| %>
+<tr>
+<td><%= l.property_type %></td><br>
+<td><%= l.property_location %></td><br>
+<td><%= l.property_address %><br></td>
+<td><%= l.property_price_per_night %></td><br>
+<td><%= l.date_availability%></td><br>
+<td><%= l.max_people %></td><br>
+</tr>
 <% end %>
+<br>
+
+<%= link_to root_path do %> <%= content_tag :span, "Home", :class => "home-link" %> <% end %>
+
+
+

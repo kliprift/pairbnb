@@ -1,0 +1,42 @@
+<%= form_for(@listings) do |f| %>
+
+<div class ="select">
+<%= f.label :property_type, "Property Type" %>
+<%= f.select :property_type, ['Residential', 'Commercial'] %>
+</div>
+
+<div class ="select">
+<%= f.label :property_location, "Location" %>
+<%= f.select :property_location, ['Malaysia', 'Singapore', 'Indonesia' , 'Thailand']%>
+</div>
+
+<div class ="text_area">
+<%= f.label :property_address, "Address" %>
+<%= f.text_area :property_address, cols: "30", rows: "10"  %>
+</div>
+
+<div class ="text_area">
+<%= f.label :property_description, "Descriptions" %>
+<%= f.text_area :property_description, cols: "30", rows: "10" %>
+</div>
+
+
+<div class ="field">
+<%= f.label :property_price_per_night, "Price Per Night (USD)" %>
+<%= f.text_field :property_price_per_night%> 
+</div>
+
+<div class ="select">
+<%= f.label :max_people, "Max People "%>
+<%= f.select :max_people, ['1', '2', '3', '4', '5', '6'] %>
+</div>
+
+<div class ="field">
+<%= f.label :date_availability, "Available From" %>
+<%= f.date_select :date_availability %>
+</div>
+
+<div class ="submit">
+<%= f.submit "Create" %>
+<% end %>
+</div>
